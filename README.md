@@ -1,10 +1,10 @@
 # EI_BD
 
->>Objectives
+>Objectives
 
 This is a class of the second year, first semestre in IPL(Instituto Politécnico de Leiria). Here we learn the basics about database, SQL and NOSQL database systems.
 
->>Technologies
+>Technologies
 
 -Oracle SQL Developer
 -Mongo DB
