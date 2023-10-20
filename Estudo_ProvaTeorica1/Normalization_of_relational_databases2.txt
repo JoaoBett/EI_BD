@@ -1,0 +1,6 @@
+Second normal form
+    -!= composite PK (chave primaria composta) 
+                AND
+    -!= columns depending on part of the composite PK
+
+    -"need a Functional Dependencies Diagram"

@@ -1,0 +1,21 @@
+Third normal form
+
+-Candidate key
+    -could be primary key
+    -several candidate keys but only one primary
+
+
+-All forms
+    -Lighter updates/inserts
+    -Better organization of data
+    -Scalable structure
+    -No redundancy
+
+
+-When building new tables:
+    -avoid nulls
+    -avoid redundancy
+    -avoid names and dates in PKs
+
+    -keep your PKs as simple as possible
+    -generate ids instead of composite PKs
