@@ -28,7 +28,7 @@ WHERE categoria_id = 6 OR categoria_id = 20
 ORDER BY preco_unit_atual ASC;
 
 /*Exercicio 6*/
-SELECT nome || '-' || '>' || preco_unit_atual || '�' AS produto_preco, marca 
+SELECT nome || '-' || '>' || preco_unit_atual || ' ' AS produto_preco, marca 
 FROM produto
 WHERE marca != 'QINGSTON' or marca IS NULL;
 
@@ -69,17 +69,17 @@ ORDER BY preco_unit_atual ASC;
 /*Exercicio 12*/
 /*A*/
 SELECT nome, TRUNC(SYSDATE - data_abertura) as dias_vida
-from loja
+FROM loja
 WHERE nome LIKE '%Contente%';
 
 /*B*/
 SELECT nome, TRUNC(MONTHS_BETWEEN(SYSDATE,data_abertura)) as meses_vida
-from loja
+FROM loja
 WHERE nome LIKE '%Contente%';
 
 /*C*/
 SELECT nome, TRUNC(MONTHS_BETWEEN(SYSDATE,data_abertura) / 12) as meses_vida
-from loja
+FROM loja
 WHERE nome LIKE '%Contente%';
 
 /*Exercicio 13*/
