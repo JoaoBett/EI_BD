@@ -11,9 +11,9 @@ In this class, we had to work with a supermarket DB.
 
 ## Technologies
 
-- **Oracle SQL Developer**: Oracle's integrated development environment for working with SQL databases.
+- <span style="color: blue;">**Oracle SQL Developer**</span>: Oracle's integrated development environment for working with SQL databases.
 
-- **Mongo DB**: A popular NoSQL database system for managing unstructured data. Althought we talked for just a few classes, in my opinion, not enough to get a good knowledge.
+- <span style="color: green;">**Mongo DB**</span>: A popular NoSQL database system for managing unstructured data. Althought we talked for just a few classes, in my opinion, not enough to get a good knowledge.
 
 ## Oracle SQL Developer
 
