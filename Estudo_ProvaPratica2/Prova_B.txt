@@ -1,0 +1,53 @@
+1.
+SELECT '[' || po.id || ']' || TO_CHAR(po.instante, 'DD-Mon, HH') || 'h' AS POSTURAS_DE_OVOS_DIAS_1
+FROM posturas_de_ovos po
+WHERE TO_CHAR(po.instante ,'DD') = 1;
+
+
+2.
+SELECT  categorias_ovos.sigla AS CATEGORIA
+	COUNT(posturas_ovos.galinha_id) AS OVOS_NAO_PARTIDOS
+FROM categorias_ovos
+	JOIN posturas_ovos ON categorias_ovos.id = posturas_ovos.categoria_ovo_id
+WHERE posturas_ovos.ovo_partido = 0;
+
+3.
+Q1.
+SELECT TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD') AS DIA
+FROM posturas_ovos
+WHERE TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD') = (SELECT MIN(TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD'))
+							    FROM posturas_ovos)
+							    OR
+							   (SELECT MAX(TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD'))
+							    FROM posturas_ovos)
+
+Q2.
+SELECT MAX(TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD')) AS DIA
+FROM posturas_ovos
+UNION 
+SELECT MIN(TO_CHAR(posturas_ovos.instante, 'Day ,YYYY-MM-DD')) AS DIA
+FROM posturas_ovos
+
+4.
+SELECT  categorias_ovos.sigla 
+	CASE
+		WHEN categorias_ovos.sigla = 'S' THEN 'SMALL' 
+	END || '(' || peso_min_g || '-' || peso_max_g || ')'
+	CASE
+		WHEN categorias_ovos.peso_max_g = NULL THEN '?' CATEGORIA
+	COUNT(posturas_ovos.galinha_id)AS OVOS_POSTOS
+FROM categorias_ovos
+	JOIN posturas_ovos ON categoria_ovos.id = posturas_ovos.categoria_ovo_id
+	JOIN galinhas ON posturas_ovos.id = galinhas.id
+	JOIN racas ON galinhas.raca_id = racas.id
+WHERE racas.nome = 'Rhode Island' AND racas.nome = 'Legorne'
+GROUP BY categorias_ovos.sigla
+HAVING MAX(COUNT(posturas_ovos.galinha_id)) AND MIN(COUNT(posturas_ovos.galinha_id));
+
+
+
+
+
+
+
+
