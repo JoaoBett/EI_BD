@@ -1,0 +1,55 @@
+1.
+SELECT  galinhas.nome || ': ' || TO_CHAR(galinhas.data_nasim, 'YYYY') 
+	CASE
+		WHEN galinhas.data_nascim IS NULL THEN '---'
+	END AS GALINHA
+	galinhas.status_atual
+	CASE
+		WHEN galinhas.status_atual = 'F' THEN 'Ferias'
+		WHEN galinhas.status_atual = 'R' THEN 'Reformada'
+	AS ESTADO_ATUAL
+FROM galinhas
+WHERE galinhas.status_atual = 'R' OR galinhas.status_atual = 'F';
+
+
+2.
+SELECT  galinhas.nome AS GALINHA
+	COUNT(posturas_ovos.galinha_id)AS TOTAL_OVOS_2021
+FROM galinhas
+	JOIN posturas_ovos ON galinhas.id = posturas_ovos.galinha_id
+WHERE TO_CHAR(posturas_ovos.instante, 'YYYY') = 2021
+GROUP BY galinhas.nome
+ORDER BY COUNT(postura_ovos.instante) DESC;
+
+
+3.
+Q1.
+SELECT LOWER(racas.nome) AS RACAS_SEM_GALINHAS
+FROM racas
+WHERE racas.id NOT IN (SELECT galinhas.racas_id
+			FROM galinhas);
+
+Q2.
+SELECT LOWER(racas.nome) AS RACAS_SEM_GALINHAS
+FROM racas
+MINUS 
+SELECT galinhas.racas_id
+FROM galinhas;
+
+
+4.
+SELECT  racas.nome AS RACA_NOME
+	COUNT(posturas_ovos.galinha_id) AS OVOS_POSTOS_ANO_ANTERIOR
+FROM racas
+	JOIN galinhas ON racas.id = galinhas.raca_id
+	JOIN posturas_ovos ON galinhas.id = posturas_ovos.galinha_id
+	JOIN categorias_ovos ON posturas_ovos.categoria_ovo_id = categorias_ovos.id
+WHERE categorias_ovos.descricao = 'Large' ANDTO_CHAR(postura_ovos.instante, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY' - 1)
+GROUP BY raca.nome
+HAVING MAX(COUNT(posturas_ovos.galinha_id));
+
+
+
+
+
+
